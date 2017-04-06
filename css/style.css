@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,400italic,700italic);
+
+body {
+    background-color: #555555;
+    font-family: 'Roboto', sans-serif;
+    color: #f3f3f3;
+}
+
+h1 {
+    padding-top: 20pt;
+    padding-bottom: 20pt;
+}
+
+input {
+    color: #2b2b2b;
+    height: 25pt;
+    top: 1pt;
+    border-radius: 3pt;
+    position: relative;
+}
+
+a {
+    color: #BAD4E8;
+}
+
+.correct {
+    background-color: #f1ffeb;
+}
+
+.color {
+    width: 60pt;
+    height: 60pt;
+    border: 2px solid #fff;
+    display: inline-block;
+    border-radius: 100%;
+    margin: 1pt;
+    margin-bottom: 20pt;
+    box-shadow: 3px 3px 3px #4f4f4f;
+}
+
+.color-label {
+    font-size: 7pt;
+    background-color: #ffffff;
+    color: #2b2b2b;
+    border-radius: 3pt;
+    position: relative;
+    top: 63pt;
+    padding-left: 3pt;
+    padding-right: 3pt;
+    display: inline;
+    box-shadow: 3px 3px 3px #4f4f4f;
+}
+
+.slider {
+    margin-bottom: 20pt;
+}
+
+#palette {
+    text-align: center;
+}
+
+.ui-slider .ui-slider-handle{
+    width: 1.7em;
+    height: 1.7em;
+    top: -0.5em;
+    border-radius: 100%;
+    border-color: #ffffff;
+    box-shadow: 3px 3px 3px #4f4f4f;
+}
+
+.ui-widget.ui-widget-content {
+    background-color: #474747;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    background-color: #676767;
+}
+
+.value {
+    float: right;
+}
+
+#color-format {
+    margin-top: -15pt;
+}
+
+.content {
+    padding-left: 30pt;
+    padding-right: 30pt;
+}
+
+#footer {
+    position: fixed;
+    height: 35pt;
+    bottom: 0;
+    width: 100%;
+    background-color: #2b2b2b;
+    padding: 10pt;
+    z-index: 1000;
+    box-shadow: -3px -3px 3px #4f4f4f;
+}
