@@ -4,7 +4,8 @@
 
 $(document).ready(function () {
 
-    var numberOfShapes = 10;
+    var numberOfShapes = rand(3,8);
+    var shapeSides = 4;
 
     /**
      *  Handle all actions on page
@@ -39,13 +40,11 @@ $(document).ready(function () {
         max: 360
     });
 
-
     /* Display texture when document loads */
     updateShapes();
 
     /**
-     *  Change palette parameters (trigger when changed)
-     *
+     *  Update color palete only
      */
     function updateColors() {
         var saturation = $("#saturation").slider("value");
@@ -57,6 +56,9 @@ $(document).ready(function () {
         recolorShapes(saturation, lightness, hueMin, hueMax);
     }
 
+    /**
+     * Update shapes only
+     */
     function updateShapes() {
         var saturation = $("#saturation").slider("value");
         var lightness = $("#lightness").slider("value");
@@ -97,11 +99,30 @@ $(document).ready(function () {
      * @param hueMax Maximal hue value
      */
     function generateShapes(saturation, lightness, hueMin, hueMax) {
+        makeBackground(saturation, lightness, hueMin, hueMax);
+
         for (var i = 0; i < numberOfShapes; i++) {
             putTriangle(saturation, lightness, hueMin, hueMax);
         }
     }
 
+    /**
+     * Background size of canvas with random color from range
+     *
+     * @param saturation
+     * @param lightness
+     * @param hueMin
+     * @param hueMax
+     */
+    function makeBackground(saturation, lightness, hueMin, hueMax) {
+        var rect = new Path.Rectangle({
+            point: [0, 0],
+            size: [view.size.width, view.size.height],
+            strokeColor: 'white'
+        });
+        rect.sendToBack();
+        rect.fillColor = getColor(saturation, lightness, hueMin, hueMax);
+    }
 
     /**
      * Create new triangle in canvas
@@ -112,18 +133,28 @@ $(document).ready(function () {
      * @param hueMax
      */
     function putTriangle(saturation, lightness, hueMin, hueMax) {
-        var triangle = new Path.RegularPolygon({
-            center: [rand(0, paper.view.size.width), rand(0, paper.view.size.height)],
-            sides: 3,
-            radius: paper.view.size.width,
+
+        // Don't want to put shapes in the center because it would cover to much space
+        var paperX = paper.view.size.width;
+        var paperY = paper.view.size.height;
+        var x = rand(paperX/4,(paperX/4)*3);
+        var y = rand(paperY/4,(paperY/4)*3);
+        if(x > paperX/2) x = x + paperX/4;
+        else x = x - paperX/4;
+        if(y > paperY/2) y = y + paperY/4;
+        else y = y - paperY/4;
+
+        var shape = new Path.RegularPolygon({
+            center: [x, y],
+            sides: shapeSides,
+            radius: paper.view.size.width/1.8,
             fillColor: getColor(saturation, lightness, hueMin, hueMax),
             shadowColor: new Color(0, 0, 0, 0.7),
-            shadowBlur: 7,
+            shadowBlur: 10,
             shadowOffset: new Point(rand(-3, 3), rand(-3, 3))
         });
-        triangle.rotate(rand(0, 180));
+        shape.rotate(rand(0,120));
     }
-
 
     /**
      *  Get random integer from min to max
