@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material texture generator</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="center-block content">
+            <h1>Material texture generator</h1>
+            <span class="pull-right" id="color-format">
+                <span class="form-group">
+                    <input id="my-color" type="text" placeholder="eg. #4a40bf">
+                </span>
+                <button type="button" class="btn btn-default" id="random-colors">Random Colors</button>
+                <button type="button" class="btn btn-default" id="random-shapes">Random shapes</button>
+                <button type="button" class="btn btn-default" id="download">Download</button>
+            </span>
+            <p>Saturation <span id="saturation-value"></span></p>
+            <div id="saturation" class="slider"></div>
+            <p>Lightness <span id="lightness-value"></span></p>
+            <div id="lightness" class="slider"></div>
+            <p>Hue range <span id="hue-value"></span></p>
+            <div id="hue" class="slider"></div>
+            <canvas id="generatedCanvas"></canvas>
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="container text-center">
+        <p class="muted credit"><a href="https://github.com/poooow/material-texture-generator">GitHub project page</a></p>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/paper.js"></script>
+<script type="text/paperscript" src="js/materialtg.js" canvas="generatedCanvas"></script>
+</body>
+</html>
