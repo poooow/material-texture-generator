@@ -18,12 +18,16 @@ $(document).ready(function () {
     });
 
     $("#random-shapes").click(function (event) {
-
         event.preventDefault();
         cleanInput();
         updateShapes();
     });
-
+    
+    $("#download").click(function (event) {
+       event.preventDefault();
+       downloadCanvas();
+    });
+    
     $('#my-color').on('input', function () {
         myColor($('#my-color').val());
     });
@@ -354,5 +358,9 @@ $(document).ready(function () {
         return [Math.floor(h * 360), Math.floor(s * 100), Math.floor(l * 100)];
     }
 
+    function downloadCanvas() {
+        var dataURL = ($("#generatedCanvas")[0]).toDataURL();
+        window.open(dataURL);
+    }
 });
 
